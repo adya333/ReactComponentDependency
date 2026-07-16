@@ -1,7 +1,7 @@
-const fs = require('fs');
-const path = require('path');
+import fs from "fs";
+import path from "path";
 
-function readDirectoryFiles(url, files=[])
+export default function readDirectoryFiles(url, files=[])
 {
     try{
     const dirents = fs.readdirSync(url,{withFileTypes:true});
@@ -25,4 +25,3 @@ function readDirectoryFiles(url, files=[])
     }
 }
 
-module.exports = {readDirectoryFiles};
