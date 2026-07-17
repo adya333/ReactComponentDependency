@@ -5,10 +5,14 @@ export default function readDirectoryFiles(url, files=[])
 {
     try{
     const dirents = fs.readdirSync(url,{withFileTypes:true});
+
+    const validExtensions = [".js", ".jsx", ".ts", ".tsx"];
+
     dirents.forEach(dirent => {
-                if(dirent.isFile())
+                if(dirent.isFile() && 
+                  validExtensions.some(ext => dirent.name.endsWith(ext)))
                 {
-                    //console.log(`${dirent.name} -- FILE`);
+                   
                     files.push(dirent);
                 }
                 if(dirent.isDirectory())

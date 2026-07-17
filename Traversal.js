@@ -1,10 +1,10 @@
 
 import traverse from "@babel/traverse";
-import  parsingFile  from "./ParsingFile.js";
+import  astGeneration  from "./AstGeneration.js";
 import  url  from "./config.js";
 
 
-const ast = parsingFile(url);
+const ast = astGeneration(url);
 
 
 export default function importsTraversal()
@@ -19,6 +19,7 @@ export default function importsTraversal()
     
   },
 });
+
 }
 
 importsTraversal();
