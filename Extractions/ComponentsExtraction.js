@@ -1,7 +1,7 @@
 import traverse from "@babel/traverse";
-import url from "./config.js";
-import astGeneration from "./AstGeneration.js";
-import readDirectoryFiles from "./ReadDirectoryFiles.js";
+import url from "../config.js";
+import astGeneration from "../Parser/AstGeneration.js";
+import readDirectoryFiles from "../Traversal/ReadDirectoryFiles.js";
 import fs from "fs"
 export default function componentExtraction()
 {
@@ -37,6 +37,7 @@ export default function componentExtraction()
                 });
      });
     // Checcking if there is a return statement
+
+    return allFiles;
     
 }
-componentExtraction();

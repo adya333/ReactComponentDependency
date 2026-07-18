@@ -12,7 +12,7 @@ export default function readDirectoryFiles(url, files=[])
                 if(dirent.isFile() && 
                   validExtensions.some(ext => dirent.name.endsWith(ext)))
                 {
-                   
+                    
                     files.push(dirent);
                 }
                 if(dirent.isDirectory())

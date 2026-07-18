@@ -1,13 +1,15 @@
+// Given an ast this function extracts the imports mentioned in the particular file.
+
 
 import traverse from "@babel/traverse";
-import  astGeneration  from "./AstGeneration.js";
-import  url  from "./config.js";
+import  astGeneration  from "../AstGeneration.js";
+import  url  from "../config.js";
 
 
-const ast = astGeneration(url);
 
 
-export default function importsTraversal()
+
+export default function importsExtraction(ast)
 {
    
    
@@ -22,4 +24,4 @@ export default function importsTraversal()
 
 }
 
-importsTraversal();
+
