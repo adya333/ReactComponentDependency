@@ -4,6 +4,7 @@ import astGeneration from "./Parser/AstGeneration.js";
 import exportsExtraction from "./Extractions/ExportsExtraction.js";
 import componentExtraction from "./Extractions/ComponentsExtraction.js";
 import stateExtraction from "./Extractions/StatesExtraction.js";
+import childrenExtraction from "./Extractions/ChildrenExtraction.js";
 
 
 let files = [];
@@ -19,3 +20,7 @@ exportsExtraction(ast);
 
 console.log("States Extraction:")
 stateExtraction(ast);
+
+
+console.log("Child JSXs of the component");
+childrenExtraction(ast);

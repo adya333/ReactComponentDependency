@@ -9,7 +9,7 @@ export default function componentExtraction()
       let allFiles = [];
       readDirectoryFiles(url,allFiles);
 
-
+      let components = new Set();
      allFiles.forEach((file)=>{
       
                     let ast = astGeneration(file);
@@ -31,13 +31,14 @@ export default function componentExtraction()
                         if(hasJSXReturn===true)
                         {
                             functionName = path.node.id.name;
-                            console.log(functionName);
+                            components.add(functionName);
+                            //console.log(functionName);
                         }
                     }
                 });
      });
-    // Checcking if there is a return statement
+    
 
-    return allFiles;
+    return components;
     
 }
