@@ -5,6 +5,7 @@ import exportsExtraction from "./Extractions/ExportsExtraction.js";
 import componentExtraction from "./Extractions/ComponentsExtraction.js";
 import stateExtraction from "./Extractions/StatesExtraction.js";
 import childrenExtraction from "./Extractions/ChildrenExtraction.js";
+import functionExtraction from "./Extractions/FunctionExtraction.js";
 
 
 let files = [];
@@ -18,9 +19,13 @@ console.log(files[7].name);
 const ast = astGeneration(files[7]);
 exportsExtraction(ast);
 
-console.log("States Extraction:")
-stateExtraction(ast);
+// console.log("States Extraction:")
+// stateExtraction(ast);
 
 
-console.log("Child JSXs of the component");
-childrenExtraction(ast);
+// console.log("Child JSXs of the component");
+// childrenExtraction(ast);
+
+console.log("Function extraction");
+const x = files[7].name.replace(".jsx", "");
+functionExtraction(ast, x);
