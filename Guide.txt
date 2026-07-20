@@ -1,0 +1,52 @@
+==================================================
+React Code Explorer - Development Roadmap
+==================================================
+
+1. Read Project Files
+   - Recursively scan the React project's src directory.
+   - Collect only .js and .jsx files.
+
+2. Generate AST
+   - Parse each source file into a Babel Abstract Syntax Tree (AST).
+
+3. Extract Components
+   - Identify all React components from the AST.
+
+4. Extract Imports
+   - Determine which components/files import each other.
+
+5. Build Component Hierarchy
+   - Traverse returned JSX to identify parent-child component relationships.
+
+6. Extract State
+   - Find useState hooks and record state variables.
+
+7. Extract Props
+   - Identify props accepted by each component.
+
+8. Extract Internal Functions
+   - Record helper functions declared inside components.
+
+9. Extract Event Handlers
+   - Identify event callbacks such as onClick, onChange, etc.
+
+10. Extract API Calls
+    - Detect fetch(), axios, or custom API wrapper calls.
+
+11. Extract Routing
+    - Identify routes and the components mapped to them.
+
+12. Extract Context Usage
+    - Detect createContext, Provider, and useContext usage.
+
+13. Build Component Graph
+    - Combine all extracted information into a graph representation.
+
+14. Visualize the Graph
+    - Display component hierarchy and dependencies using a graph library.
+
+15. Knowledge Graph (Future)
+    - Convert the extracted data into a structured format for querying.
+
+16. LLM Integration (Future)
+    - Use the knowledge graph to answer questions about the React codebase.
