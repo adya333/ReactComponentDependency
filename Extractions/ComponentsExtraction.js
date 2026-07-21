@@ -3,6 +3,7 @@ import url from "../config.js";
 import astGeneration from "../Parser/AstGeneration.js";
 import readDirectoryFiles from "../Traversal/ReadDirectoryFiles.js";
 import fs from "fs"
+import pathModule from "path";
 export default function componentExtraction()
 {
     // Collecting all the dirent objects;
@@ -10,10 +11,10 @@ export default function componentExtraction()
       readDirectoryFiles(url,allFiles);
 
       let components = new Set();
-     allFiles.forEach((file)=>{
-      
+     allFiles.forEach((file,index)=>{
+                   
                     let ast = astGeneration(file);
-                   // console.log("This is the ast for the first src file ", ast);
+                  
                     let functionName = "";
                     traverse(ast, {
                     FunctionDeclaration(path)
@@ -31,8 +32,13 @@ export default function componentExtraction()
                         if(hasJSXReturn===true)
                         {
                             functionName = path.node.id.name;
-                            components.add(functionName);
-                            //console.log(functionName);
+                            components.add({
+                                functionName: functionName,
+                                name: file.name,
+                                filePath: pathModule.join(file.parentPath, file.name),
+                                ast:ast
+                            });
+                            
                         }
                     }
                 });

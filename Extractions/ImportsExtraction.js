@@ -2,7 +2,7 @@
 
 
 import traverse from "@babel/traverse";
-import  astGeneration  from "../AstGeneration.js";
+import  astGeneration  from "../Parser/AstGeneration.js";
 import  url  from "../config.js";
 
 
@@ -12,15 +12,17 @@ import  url  from "../config.js";
 export default function importsExtraction(ast)
 {
    
-   
+   let imports = new Set();
    traverse(ast, {
   ImportDeclaration: function(path) {
     path.node.specifiers.forEach((specifier)=>{
-        console.log(specifier.local.name);
+        imports.add(specifier.local.name);
     })
     
-  },
-});
+      },
+    });
+
+    return imports;
 
 }
 

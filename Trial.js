@@ -6,26 +6,21 @@ import componentExtraction from "./Extractions/ComponentsExtraction.js";
 import stateExtraction from "./Extractions/StatesExtraction.js";
 import childrenExtraction from "./Extractions/ChildrenExtraction.js";
 import functionExtraction from "./Extractions/FunctionExtraction.js";
+import importsExtraction from "./Extractions/ImportsExtraction.js";
 
 
-let files = [];
-readDirectoryFiles(url, files);
-// files.forEach((d,index)=>{
-//     console.log(index, d.name);
-// })
-
-console.log(files[7].name);
-
-const ast = astGeneration(files[7]);
-exportsExtraction(ast);
-
-// console.log("States Extraction:")
-// stateExtraction(ast);
 
 
-// console.log("Child JSXs of the component");
-// childrenExtraction(ast);
+// Read all the components
+const components = componentExtraction();
 
-console.log("Function extraction");
-const x = files[7].name.replace(".jsx", "");
-functionExtraction(ast, x);
+
+components.forEach((component)=>{
+    console.log(component.name);
+    const exs = exportsExtraction(component.ast);
+    console.log(exs);
+
+    const imports = importsExtraction(component.ast);
+    console.log(imports);
+});
+
