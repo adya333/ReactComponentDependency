@@ -2,6 +2,7 @@ import traverse from "@babel/traverse";
 
 export default function stateExtraction(ast)
 {
+    const states = [];
    traverse(ast, {
     VariableDeclaration:function(path)
     {
@@ -9,11 +10,17 @@ export default function stateExtraction(ast)
         decla.forEach((d)=>{
             if(d.init.callee && d.init.callee.name === "useState")
             {
-                console.log(d.id.elements[0].name, d.id.elements[1].name);
+                states.push({
+                    name:d.id.elements[0].name,
+                    function:d.id.elements[1].name
+                });
+                
             }
         });
         
        
     }
    });
+
+   return states;
 }

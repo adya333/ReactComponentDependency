@@ -14,7 +14,6 @@ export default function exportsExtraction(ast)
                 exs.add({type:type, name:path.node.declaration.id.name});
         }
     });
-
     return exs;
 }
 

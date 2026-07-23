@@ -4,6 +4,7 @@ import astGeneration from "../Parser/AstGeneration.js";
 import readDirectoryFiles from "../Traversal/ReadDirectoryFiles.js";
 import fs from "fs"
 import pathModule from "path";
+import ComponentNode from "../models/ComponentNode.js";
 export default function componentExtraction()
 {
     // Collecting all the dirent objects;
@@ -32,13 +33,13 @@ export default function componentExtraction()
                         if(hasJSXReturn===true)
                         {
                             functionName = path.node.id.name;
-                            components.add({
-                                functionName: functionName,
-                                name: file.name,
-                                filePath: pathModule.join(file.parentPath, file.name),
-                                ast:ast
-                            });
-                            
+                            const component = new ComponentNode(
+                                functionName,
+                                file.name,
+                                pathModule.join(file.parentPath, file.name),
+                                ast
+                            );
+                            components.add(component);
                         }
                     }
                 });
